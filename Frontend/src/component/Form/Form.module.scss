@@ -1,0 +1,145 @@
+@import "../../styles/responsive.scss";
+
+.form {
+    border-radius: 15px;
+    border: 10px solid #300A14;
+    max-width: 1028px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 59px 130px;
+}
+
+.errorText {
+  font-size: 12px;
+  margin-top: 6px;
+  color: var(--cl-red);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  width: 100%;
+
+  &__input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #F4E6AA;
+    background-color: #F4E6AA;
+    border-radius: 15px;
+    color: #000000;
+
+    &::placeholder {
+      color: #000000;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+    cursor: pointer;
+    transition: all 0.15s linear;
+    &:focus {
+      border: 1px solid var(--cl-white);
+    }
+
+    &:hover:not(:focus) {
+      opacity: 0.7;
+    }
+
+    &.error {
+      border: 1px solid var(--cl-red);
+    }
+  }
+
+  &__message {
+    height: 112px;
+    padding: 12px;
+    border: 1px solid #F4E6AA;
+    background-color: #F4E6AA;
+    border-radius: 8px;
+    resize: none;
+    color: #000000;
+    &::placeholder {
+      color: #000000;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    outline: none;
+    cursor: pointer;
+    transition: all 0.15s linear;
+    &:focus {
+      border: 1px solid var(--cl-white);
+    }
+
+    &.error {
+      border: 1px solid var(--cl-red);
+    }
+
+    &:hover:not(:focus) {
+      opacity: 0.7;
+    }
+
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar-thumb {
+      height: 10px;
+      background: #F4E6AA;
+      border-radius: 50px;
+      width: 4px;
+    }
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 4px;
+    }
+  }
+}
+
+.btn {
+    background-color: #D85521;
+    color: #fff;
+    border-radius: 15px;
+    max-width: 296px;
+    width: 100%;
+    min-height: 69px;
+    margin-top: 38px;
+}
+
+@include responsive(screen) {
+  .form {
+    box-sizing: border-box;
+    padding: 43px 90px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .label {
+    max-width: 536px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .btn {
+    max-width: 300px;
+    width: 100%;
+    margin: 38px auto;
+  }
+}
+
+@include responsive(tablet) {
+    .form {
+    padding: 29px 70px;
+  }
+
+  .btn {
+    max-width: 108px;
+  }
+}
+@include responsive(phone) {
+    .form {
+    padding: 45px 30px;
+  }
+}

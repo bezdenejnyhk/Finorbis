@@ -1,0 +1,75 @@
+@import '../../../styles/responsive.scss';
+
+.button {
+  outline: none;
+  background-color: var(--cl-main);
+  color: var(--cl-black);
+  border: none;
+  border-radius: 8px;
+  padding: 14.5px 24px;
+  height: 48px;
+  cursor: pointer;
+  transition: opacity 0.15s linear;
+  white-space: nowrap;
+  line-height: 1;
+  width: 100%;
+
+  &:hover,
+  &:active {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.black {
+  color: var(--cl-white);
+  background-color: var(--cl-background);
+  border: 1px solid var(--cl-main);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+// @include responsive(fullscreen) {
+//   .button {
+//     height: 46px;
+//     padding: 0px 48px;
+//     font-size: 14px;
+//     line-height: 24px;
+//   }
+// }
+
+// @include responsive(screen) {
+//   .button {
+//     height: 34px;
+//     padding: 0px 36px;
+//     border-radius: 6px;
+//     font-size: 11px;
+//     line-height: 21px;
+//   }
+// }
+
+// @include responsive(tablet) {
+//   .button {
+//     padding: 0 27px;
+//     height: 27px;
+//     font-size: 8px;
+//     border-radius: 5px;
+//   }
+// }
+
+// @include responsive(phone) {
+//   .button {
+//     padding: 0 43px;
+//     height: 42px;
+//     font-size: 13px;
+//     line-height: 1;
+//     border-radius: 5px;
+//   }
+// }
