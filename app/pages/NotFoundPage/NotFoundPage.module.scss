@@ -1,0 +1,180 @@
+@use "../../styles/responsive.scss" as *;
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow background */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(147, 19, 9, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(147, 19, 9, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.bigNumber {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: clamp(160px, 22vw, 320px);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(147, 19, 9, 0.3) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  user-select: none;
+  margin-bottom: 4px;
+
+  @include responsive(phone) {
+    font-size: clamp(120px, 28vw, 200px);
+  }
+}
+
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--cl-main);
+  margin: 24px auto 32px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.subtitle {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--cl-white);
+  margin-bottom: 20px;
+  line-height: 1.2;
+
+  @include responsive(phone) {
+    font-size: clamp(18px, 5vw, 26px);
+  }
+}
+
+.description {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(14px, 1.6vw, 17px);
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 520px;
+  margin: 0 auto 48px;
+
+  @include responsive(phone) {
+    font-size: 14px;
+    margin-bottom: 36px;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.homeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--cl-main);
+  color: var(--cl-white);
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    background: #b81a0e;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(147, 19, 9, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include responsive(phone) {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
+
+.arrowIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+
+  .homeLink:hover & {
+    transform: translateX(-3px);
+  }
+}
+
+/* Grid lines decoration */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  &::before {
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+  }
+
+  &::after {
+    height: 1px;
+    left: 0;
+    right: 0;
+    top: 50%;
+  }
+}

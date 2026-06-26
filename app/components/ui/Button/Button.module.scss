@@ -1,0 +1,21 @@
+@import "../../../styles/responsive.scss";
+
+.button {
+  display: inline-flex;
+  padding: 18px 30px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 82px;
+  border: 1px solid var(--cl-main);
+  color: var(--cl-white);
+  font-family: "Lexend", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.button.green {
+  background: var(--cl-main);
+  color: var(--cl-black);
+}

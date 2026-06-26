@@ -1,0 +1,32 @@
+.intro {
+  display: grid;
+  grid-template-columns: minmax(564px, 1fr) 2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.badge {
+  display: flex;
+  padding: 10px 20px 10px 12px;
+  align-items: center;
+  gap: 6px;
+  border-radius: 61px;
+  background: var(--cl-gray-15, #262626);
+  color: var(--cl-white);
+  max-width: fit-content;
+}
+
+.title {
+  margin-top: 20px;
+  margin-bottom: 14px;
+  white-space: pre-line;
+}
+
+.subtitle {
+  margin-bottom: 54px;
+}
+
+.buttons {
+  display: flex;
+  gap: 45px;
+}

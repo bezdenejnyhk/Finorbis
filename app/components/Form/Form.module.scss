@@ -1,0 +1,286 @@
+@use "../../styles/responsive.scss" as *;
+
+// Local token: background used for floating label cutout.
+// Must match the page/form background at the top area.
+$label-bg: #1b1414;
+
+.form {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(147, 19, 9, 0.45) 0%, transparent 70%),
+    #1b1414;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  padding: 48px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  box-sizing: border-box;
+
+  border-radius: 20px;
+  border: 1px solid #f4f4f4;
+  background: rgba(0, 0, 0, 0.2);
+  max-width: 704px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+// ─── Title ───────────────────────────────────────────────────────────────────
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}
+
+// ─── Field list ──────────────────────────────────────────────────────────────
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// ─── Individual field wrapper ─────────────────────────────────────────────────
+
+// Outer wrapper that contains .field + optional error text below
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+// Inner wrapper — contains only the input/textarea + floating label.
+// Height equals exactly the control height, so top: 50% is always correct.
+.field {
+  position: relative;
+}
+
+// ─── Floating label ───────────────────────────────────────────────────────────
+
+.label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  user-select: none;
+  background: transparent;
+  padding: 0;
+  white-space: nowrap;
+  transition:
+    top 0.15s ease,
+    transform 0.15s ease,
+    font-size 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease,
+    padding 0.15s ease;
+  z-index: 1;
+}
+
+// Label for textarea — starts aligned to top padding, not vertically centred
+.labelTextarea {
+  top: 12px;
+  transform: none;
+
+  &.labelFloating {
+    top: 0;
+    transform: translateY(-50%);
+  }
+}
+
+// Floating state (focused or has value)
+.labelFloating {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 12px;
+  line-height: 1;
+  padding: 0 4px;
+  left: 8px;
+  background-color: $label-bg;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+// Error state for label
+.labelError {
+  color: #931309;
+
+  &.labelFloating {
+    color: #931309;
+  }
+}
+
+// ─── Input ────────────────────────────────────────────────────────────────────
+
+.input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:focus {
+    border-color: #fff;
+  }
+}
+
+.inputError {
+  border-color: #931309;
+
+  &:focus {
+    border-color: #931309;
+  }
+}
+
+// ─── Textarea ─────────────────────────────────────────────────────────────────
+
+.textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  // min-height = rows × line-height + 2 × vertical padding
+  min-height: calc(3 * 1.5em + 2 * 12px);
+  transition: border-color 0.15s ease;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:focus {
+    border-color: #fff;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 50px;
+  }
+}
+
+// ─── Hover — pointer devices only ─────────────────────────────────────────────
+
+@media (hover: hover) and (pointer: fine) {
+  .input:hover:not(:focus):not(.inputError) {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .textarea:hover:not(:focus) {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+// ─── Error text ───────────────────────────────────────────────────────────────
+
+.errorText {
+  display: block;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.4;
+  color: #931309;
+}
+
+// ─── Message counter ──────────────────────────────────────────────────────────
+
+.counter {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: right;
+}
+
+.counterMax {
+  color: #931309;
+}
+
+// ─── Submit button wrapper ─────────────────────────────────────────────────────
+
+.btnWrapper {
+  // Override Button's pill border-radius and make it full-width
+  :global(button) {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+// ─── Responsive ───────────────────────────────────────────────────────────────
+
+@include responsive(screen) {
+  .form {
+    padding: 40px 28px 32px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}
+
+@include responsive(tablet) {
+  .form {
+    border-radius: 16px;
+    padding: 32px 20px 28px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}
+
+@include responsive(phone) {
+  .form {
+    border-radius: 12px;
+    padding: 28px 16px 24px;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+}

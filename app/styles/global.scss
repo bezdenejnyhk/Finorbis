@@ -1,0 +1,77 @@
+@import "responsive.scss";
+:root {
+  // Шрифты
+  --font-family-main: "Lexend", sans-serif;
+
+  // z-index
+  --modal-z-index: 10;
+
+  // Цвета
+  --cl-white: #fff;
+  --cl-white-subtitle: #e4e4e7;
+  --cl-background: #1f1f1f;
+  --cl-black: #1c1c1c;
+  --cl-main: #caff33;
+  --cl-yellow: #ffd700;
+  --cl-gray-15: #262626;
+  --cl-gray-70: #b3b3b3;
+}
+
+* {
+  font-family: "Lexend", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--cl-gray-70, #b3b3b3);
+  font-family: "Lexend", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 150%;
+  background: var(--cl-background);
+}
+
+.section {
+  max-width: 1596px;
+  scroll-margin: 20px;
+
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  color: var(--cl-white);
+}
+
+h2 {
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  color: var(--cl-white);
+}
+
+h3 {
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  color: var(--cl-white);
+}
+
+.yellow {
+  color: var(--cl-yellow);
+}
